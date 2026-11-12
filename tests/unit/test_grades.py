@@ -66,3 +66,9 @@ def test_credits_out_of_range_are_rejected(credits):
 def test_non_integer_credits_are_rejected(credits):
     with pytest.raises(TypeError):
         validate_credits(credits)
+
+# R3 – equivalence partitioning: a value that is not a string at all.
+@pytest.mark.parametrize("letter", [None, 4])
+def test_non_string_letter_is_rejected(letter):
+    with pytest.raises(ValueError):
+        letter_to_points(letter)
